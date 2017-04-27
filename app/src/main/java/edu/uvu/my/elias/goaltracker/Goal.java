@@ -12,11 +12,18 @@ public class Goal {
     private String mTitle;
     private String mDescription;
     private UUID mID;
+    private double completionPercent;
 
     public Goal(){
         mID = UUID.randomUUID();
         mDateStarted = new Date();
     }
+
+    public Goal(String mTitle, String mDescription) {
+        this.mTitle = mTitle;
+        this.mDescription = mDescription;
+    }
+
     public Date getDateStarted() {
         return mDateStarted;
     }
