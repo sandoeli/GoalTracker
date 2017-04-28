@@ -23,6 +23,7 @@
             android:name=".DescriptionActivity"
             android:label="Description Activity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".addGoalActivity" />
     </application>
 
 </manifest>
