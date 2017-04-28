@@ -1,6 +1,7 @@
 package edu.uvu.my.elias.goaltracker;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -13,6 +14,7 @@ public class Goal {
     private String mDescription;
     private UUID mID;
     private double completionPercent;
+    private List<Step> stepList;
 
     public Goal(){
         mID = UUID.randomUUID();

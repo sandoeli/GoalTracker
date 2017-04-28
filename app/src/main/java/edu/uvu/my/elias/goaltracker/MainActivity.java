@@ -1,5 +1,6 @@
 package edu.uvu.my.elias.goaltracker;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -82,5 +83,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openDescriptionActivity(View view) {
+        Intent displayInformationIntent = new Intent(this, DescriptionActivity.class);
+
+        final int result = 1;
+        displayInformationIntent.putExtra("Goal", goalList.get(1).toString());
+
+        startActivityForResult(displayInformationIntent, result);
     }
 }
