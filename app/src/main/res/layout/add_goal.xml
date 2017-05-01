@@ -17,33 +17,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Enter Title"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:text="Lose Weight"/>
 
         <EditText
             android:id="@+id/newGoalDescTextView"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:hint="Enter description" />
+            android:hint="Enter description"
+            android:text="Lose 11 lbs"/>
 
         <EditText
             android:id="@+id/stepTextView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Enter Step"/>
+            android:hint="Enter Step" />
 
 
     </LinearLayout>
+
     <Button
+        android:id="@+id/addSteppButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/black"
-        android:textColor="@android:color/white"
+        android:onClick="addMoreSteps"
         android:text="Add more steps"
-        android:onClick="addMoreSteps"/>
+        android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/removeStepButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/black"
+        android:onClick="deleteStep"
+        android:text="Delete Step"
+        android:textColor="@android:color/white" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/black"
         android:textColor="@android:color/white"
-        android:text="Create!"/>
+        android:text="Create!"
+        android:onClick="createGoal"/>
 </LinearLayout>

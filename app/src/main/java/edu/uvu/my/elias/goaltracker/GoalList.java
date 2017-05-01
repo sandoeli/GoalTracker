@@ -29,12 +29,4 @@ public class GoalList {
         return mGoals;
     }
 
-    public Goal getGoal(UUID id){
-        for (Goal goal : mGoals){
-            if (goal.getID().equals(id)){
-                return goal;
-            }
-        }
-        return null;
-    }
 }

@@ -1,5 +1,7 @@
 package edu.uvu.my.elias.goaltracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -14,6 +16,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Elias on 4/27/2017.
@@ -38,17 +45,34 @@ public class addGoalActivity extends AppCompatActivity {
         newGoal.setHint("Next step");
         layout.addView(newGoal);
         Log.d("CS3060", "addMoreSteps: " + layout.getChildCount());
+    }
 
-        /*final LayoutInflater root = LayoutInflater.from(view.getContext());
-        final View rootView = root.inflate(R.layout.row, null);
-        EditText textOut = (EditText) findViewById(R.id.textOut);
-        LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.addGoalLayout);
-        ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams
-                (ActionBar.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        EditText newGoal = new EditText(view.getContext());
-        newGoal.setHint("Next step");
-        newGoal.setLayoutParams(layoutParams);
-        layout.addView(newGoal);*/
+    public void deleteStep(View view) {
+        EditText oldGoal = (EditText) layout.getChildAt(layout.getChildCount()-1);
+        layout.removeView(oldGoal);
+    }
+
+    public void createGoal(View view) {
+
+        Intent intent = new Intent();
+        Goal createdGoal = new Goal();
+        createdGoal.setDateStarted(new Date().toString());
+        createdGoal.setDescription(((EditText)findViewById(R.id.newGoalDescTextView)).getText().toString());
+        createdGoal.setTitle(((EditText)findViewById(R.id.newGoalTitleTextView)).getText().toString());
+        List<Step> steps = new ArrayList<>();
+        for (int j = 2; j < layout.getChildCount(); j++){
+            Step step = new Step(((EditText)layout.getChildAt(j)).getText().toString());
+            String data  = ((EditText)layout.getChildAt(j)).getText().toString();
+            Log.d("CS3060", "createGoal: ");
+            steps.add(step);
+        }
+        createdGoal.setStepList(steps);
+        Log.d("CS3060", "createGoal: ");
+
+        intent.putExtra("new goal", createdGoal);
+
+        setResult(RESULT_OK, intent);
+
+        finish();
     }
 }
